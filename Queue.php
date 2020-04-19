@@ -33,10 +33,6 @@ class Queue
             $this->front = $node;
             $this->back = $node;
             $this->count++;
-        } elseif ($this->count == 1) {
-            $this->back = $node;
-            $this->front->next = $this->back;
-            $this->count++;
         } else {
             $this->back->next = $node;
             $this->back = $node;
@@ -51,8 +47,7 @@ class Queue
         } else {
             if ($this->count == 1) {
                 $removedValue = $this->front->value;
-                $this->front = null;
-                $this->back = null;
+                $this->front = $this->back = null;
                 $this->count--;
                 return $removedValue;
             } else {
